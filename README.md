@@ -1,10 +1,13 @@
 # Ví Nhỏ — Quản lý chi tiêu cá nhân
 
+[![Android CI](https://github.com/charrisay2/Final_Android/actions/workflows/android.yml/badge.svg)](https://github.com/charrisay2/Final_Android/actions/workflows/android.yml)
+
 Ứng dụng Android ghi thu/chi theo danh mục, đặt ngân sách tháng, xem biểu đồ thống kê và chụp ảnh hoá đơn.
 Dữ liệu lưu trên **Cloud Firestore** (dùng được khi offline), ảnh hoá đơn trên **Cloud Storage**, đăng nhập **Google qua Firebase Auth + Credential Manager**, nhắc ghi chi tiêu hằng ngày bằng **WorkManager + notification**.
 
 | | |
 |---|---|
+| **Repo** | https://github.com/charrisay2/Final_Android |
 | **Sinh viên** | Nguyễn Phú Quốc |
 | **MSSV** | 2431540075 |
 | **Đề tài** | Đề tài 2 — Quản lý chi tiêu cá nhân |
@@ -304,6 +307,7 @@ Cách đo lại:
 
 - Tài liệu chính thức: [Firebase Auth](https://firebase.google.com/docs/auth/android/firebaseui), [Credential Manager](https://developer.android.com/identity/sign-in/credential-manager), [Firestore offline](https://firebase.google.com/docs/firestore/manage-data/enable-offline), [WorkManager](https://developer.android.com/topic/libraries/architecture/workmanager), [Navigation type-safe routes](https://developer.android.com/guide/navigation/design/type-safety), [Material 3](https://m3.material.io/).
 - Code tham khảo từ các bài lab trong khoá (Retrofit, ViewModel/StateFlow, Navigation, Hilt, Room, Firebase Auth, DataStore/WorkManager) do chính tôi làm ở các tuần trước.
+- **Repo**: https://github.com/charrisay2/Final_Android — CI (`Android CI`) chạy unit test + lint cho mọi push lên `main`.
 - **Ghi nguồn AI**: phần khung dự án, code và README được soạn với sự hỗ trợ của trợ lý AI, sau đó tôi đọc lại, chạy test và chỉnh sửa. Tôi hiểu và giải thích được toàn bộ code trong repo này.
 - Biểu đồ (donut, bar) tự viết bằng Compose `Canvas`/layout, không dùng thư viện chart bên thứ ba.
 - Icon: `androidx.compose.material:material-icons-extended`. Emoji danh mục lấy từ bộ emoji hệ thống.

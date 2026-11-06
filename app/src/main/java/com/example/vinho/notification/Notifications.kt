@@ -34,7 +34,16 @@ object Notifications {
 
     /** @return false nếu chưa được cấp quyền thông báo (Android 13+). */
     fun showDailyReminder(context: Context): Boolean {
-        if (!hasPermission(context)) return false
+        // Kiểm tra quyền ngay trong hàm này (không gọi qua helper) để lint thấy được
+        // là notify() luôn nằm sau một lần checkSelfPermission.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+            ContextCompat.checkSelfPermission(
+                context,
+                Manifest.permission.POST_NOTIFICATIONS,
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            return false
+        }
 
         val contentIntent = PendingIntent.getActivity(
             context,
