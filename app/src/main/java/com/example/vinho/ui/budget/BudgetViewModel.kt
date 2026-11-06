@@ -77,6 +77,9 @@ class BudgetViewModel @Inject constructor(
     private val month = MutableStateFlow(YearMonth.now())
     private val generation = MutableStateFlow(0)
 
+    /** Lỗi khi ghi dữ liệu (thêm/xoá ngân sách) — gộp vào UiState để UI hiện được. */
+    private val errorState = MutableStateFlow<String?>(null)
+
     private val budgets: Flow<List<Budget>> =
         combine(authRepository.currentUser, month) { user, m -> user to m }
             .flatMapLatest { (user, m) ->
@@ -102,8 +105,8 @@ class BudgetViewModel @Inject constructor(
 
     val uiState: StateFlow<BudgetUiState> = generation
         .flatMapLatest {
-            combine(budgets, transactions) { budgetList, (currentMonth, spentByCategory) ->
-                buildState(currentMonth, budgetList, spentByCategory)
+            combine(budgets, transactions, errorState) { budgetList, (currentMonth, spentByCategory), error ->
+                buildState(currentMonth, budgetList, spentByCategory).copy(error = error)
             }.catch { error ->
                 emit(BudgetUiState(isLoading = false, error = error.toUserMessage()))
             }
@@ -134,7 +137,7 @@ class BudgetViewModel @Inject constructor(
             } catch (e: CancellationException) {
                 throw e
             } catch (e: Exception) {
-                _uiState.update { it.copy(error = e.toUserMessage()) }
+                errorState.value = e.toUserMessage()
                 onResult(false)
             }
         }
@@ -147,7 +150,7 @@ class BudgetViewModel @Inject constructor(
             } catch (e: CancellationException) {
                 throw e
             } catch (e: Exception) {
-                _uiState.update { it.copy(error = e.toUserMessage()) }
+                errorState.value = e.toUserMessage()
             }
         }
     }

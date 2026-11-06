@@ -10,6 +10,8 @@ Dữ liệu lưu trên **Cloud Firestore** (dùng được khi offline), ảnh h
 | **Đề tài** | Đề tài 2 — Quản lý chi tiêu cá nhân |
 | **Package** | `com.example.vinho` |
 | **minSdk / targetSdk / compileSdk** | 26 / 36 / 36 |
+| **Kotlin / AGP / KSP** | 2.2.21 / 8.8.2 / 2.2.21-2.0.5 |
+| **Firebase BoM** | 34.0.0 (Auth · Firestore · Storage) |
 | **Ngôn ngữ** | Kotlin + 100% Jetpack Compose (Material 3) |
 
 ---
@@ -221,6 +223,10 @@ Nếu quên bước 2, bản debug vẫn đăng nhập được nhưng bản rel
 | `ui/BudgetViewModelTest` | Tính tiến độ + số vượt ngân sách; danh mục chưa đặt ngân sách; không lưu giới hạn ≤ 0 |
 | `androidTest/TransactionFormScreenTest` | Compose UI: bấm Lưu khi trống → hiện lỗi `error_amount_required`; nhập tiền + chọn danh mục + Lưu → repository nhận đúng draft |
 
+Kết quả chạy thật trên máy làm bài: **11/11 unit test PASS** (`./gradlew testDebugUnitTest`),
+`compileDebugKotlin` và `assembleRelease`/`bundleRelease` (R8) đều **BUILD SUCCESSFUL**.
+Compose UI test cần emulator/thiết bị nên chưa chạy được ở đây.
+
 Test dùng **fake repository** (`app/src/test/java/com/example/vinho/Fakes.kt`) + `kotlinx-coroutines-test`, không cần Firebase hay mạng.
 
 CI: `.github/workflows/android.yml` chạy `testDebugUnitTest` và `lintDebug` cho mọi push/PR lên `main`.
@@ -254,20 +260,23 @@ release {
 
 `proguard-rules.pro` có rule giữ `$$serializer` của kotlinx.serialization (route type-safe) và Worker cho WorkManager.
 
-**Đo kích thước trước/sau R8** — chạy 2 lệnh sau rồi điền bảng (số liệu phụ thuộc máy build của bạn):
+**Đo kích thước trước/sau R8** — số liệu dưới đây là **đo thật** trên máy làm bài
+(AGP 8.8.2, Kotlin 2.2.21, Firebase BoM 34.0.0):
+
+| Bản build | Kích thước |
+|---|---|
+| Debug APK | **24,0 MB** (24.625 KB) |
+| Release APK **không** R8 | **16,7 MB** (17.069 KB) |
+| Release APK **có** R8 + shrinkResources | **3,4 MB** (3.437 KB) → **giảm 80%** |
+| Release AAB (có R8) | **7,4 MB** (7.554 KB) |
+
+Cách đo lại:
 
 ```bash
-./gradlew assembleRelease -Pandroid.enableR8=false   # hoặc tạm đặt isMinifyEnabled = false
-ls -lh app/build/outputs/apk/release/app-release.apk
-./gradlew assembleRelease
-ls -lh app/build/outputs/apk/release/app-release.apk
+./gradlew assembleDebug   && ls -l app/build/outputs/apk/debug/app-debug.apk
+./gradlew assembleRelease && ls -l app/build/outputs/apk/release/app-release.apk
+# so sánh: tạm đặt isMinifyEnabled = false + isShrinkResources = false rồi build lại
 ```
-
-| Bản build | Kích thước APK |
-|---|---|
-| Debug | *(điền sau khi build)* |
-| Release không R8 | *(điền sau khi build)* |
-| Release có R8 + shrinkResources | *(điền sau khi build)* |
 
 > Trong repo **không có** keystore, `keystore.properties` hay file `.jks` (đã `.gitignore`).
 > Không commit `mapping.txt` lên nhánh public nếu muốn giữ khó đọc cho người khác.
@@ -285,7 +294,7 @@ ls -lh app/build/outputs/apk/release/app-release.apk
 ## 11. Hạn chế đã biết
 
 - `app/google-services.json` là placeholder → **bắt buộc thay** bằng file thật mới chạy được.
-- Chưa build sẵn file `.aab/.apk` trong repo (máy làm bài không cài được Android SDK/AGP); hướng dẫn build ở mục 9.
+- Repo **không kèm** file `.aab/.apk`: bản build thử đã chạy thành công (số liệu ở mục 9) nhưng được ký bằng keystore tạm và dùng `google-services.json` placeholder, nộp bài phải tự build bằng keystore của bạn.
 - Ảnh chụp UI là bản render từ layout, không phải screenshot emulator.
 - Danh mục là danh sách cố định (chưa cho người dùng tự thêm).
 - Chưa có đồng bộ nhiều thiết bị theo thời gian thực cho ngân sách khi offline lâu (Firestore tự hoà giải khi online, không có xử lý xung đột tuỳ biến).

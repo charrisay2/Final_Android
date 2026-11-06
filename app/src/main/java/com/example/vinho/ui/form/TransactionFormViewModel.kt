@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
 import com.example.vinho.core.parseAmount
+import com.example.vinho.core.toEpochMillis
 import com.example.vinho.core.toLocalDate
 import com.example.vinho.core.toUserMessage
 import com.example.vinho.core.formatNumber
