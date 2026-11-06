@@ -1,0 +1,148 @@
+<resources>
+    <string name="app_name">Vi Nho</string>
+    <string name="app_tagline">Personal expense tracker</string>
+
+    <!-- Common -->
+    <string name="action_save">Save</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_retry">Retry</string>
+    <string name="action_add">Add</string>
+    <string name="action_close">Close</string>
+    <string name="action_back">Back</string>
+    <string name="loading">Loading…</string>
+    <string name="generic_error">Something went wrong: %1$s</string>
+    <string name="offline_banner">You are offline — changes will sync when you reconnect</string>
+    <string name="money_unit">VND</string>
+
+    <!-- Sign in -->
+    <string name="login_subtitle">Track spending and keep your budget under control</string>
+    <string name="login_google">Sign in with Google</string>
+    <string name="login_note">Your data lives in your Google account and works offline</string>
+    <string name="login_failed">Sign-in failed: %1$s</string>
+    <string name="login_cancelled">Sign-in cancelled</string>
+
+    <!-- Navigation -->
+    <string name="nav_overview">Overview</string>
+    <string name="nav_transactions">Transactions</string>
+    <string name="nav_budget">Budget</string>
+    <string name="nav_stats">Stats</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Overview -->
+    <string name="overview_title">Overview</string>
+    <string name="overview_greeting">Hi, %1$s</string>
+    <string name="overview_income">Income</string>
+    <string name="overview_expense">Spending</string>
+    <string name="overview_balance">Balance</string>
+    <string name="overview_by_category">Spending by category</string>
+    <string name="overview_recent">Recent transactions</string>
+    <string name="overview_see_all">See all</string>
+    <string name="overview_empty">No transactions this month</string>
+    <string name="overview_budget_used">%1$s%% of this month\'s budget used</string>
+    <string name="overview_budget_over">Over budget by %1$s</string>
+    <string name="overview_no_budget">No budget set for this month</string>
+    <string name="overview_prev_month">Previous month</string>
+    <string name="overview_next_month">Next month</string>
+
+    <!-- Transactions -->
+    <string name="tx_title">Transactions</string>
+    <string name="tx_search_hint">Search notes…</string>
+    <string name="tx_filter_all">All</string>
+    <string name="tx_filter_income">Income</string>
+    <string name="tx_filter_expense">Expense</string>
+    <string name="tx_empty_title">No transactions</string>
+    <string name="tx_empty_body">Tap + to add your first income or expense.</string>
+    <string name="tx_empty_search">No transactions match “%1$s”</string>
+    <string name="tx_today">Today</string>
+    <string name="tx_yesterday">Yesterday</string>
+    <string name="tx_count">%1$d transactions</string>
+
+    <!-- Transaction form -->
+    <string name="form_title_add">Add transaction</string>
+    <string name="form_title_edit">Edit transaction</string>
+    <string name="form_type_expense">Expense</string>
+    <string name="form_type_income">Income</string>
+    <string name="form_amount">Amount</string>
+    <string name="form_category">Category</string>
+    <string name="form_date">Date</string>
+    <string name="form_note">Note</string>
+    <string name="form_note_hint">e.g. Lunch with the team</string>
+    <string name="form_receipt">Receipt photo</string>
+    <string name="form_receipt_add">Choose a receipt photo</string>
+    <string name="form_receipt_change">Change photo</string>
+    <string name="form_receipt_remove">Remove photo</string>
+    <string name="form_save">Save transaction</string>
+    <string name="form_delete">Delete transaction</string>
+    <string name="form_delete_confirm_title">Delete transaction?</string>
+    <string name="form_delete_confirm_body">This transaction will be removed from your account permanently.</string>
+    <string name="error_amount_required">Enter an amount greater than 0</string>
+    <string name="error_category_required">Pick a category</string>
+    <string name="form_saved">Transaction saved</string>
+    <string name="form_deleted">Transaction deleted</string>
+    <string name="form_uploading">Uploading photo…</string>
+
+    <!-- Budget -->
+    <string name="budget_title">Budget</string>
+    <string name="budget_total">Monthly budget</string>
+    <string name="budget_spent">Spent %1$s / %2$s</string>
+    <string name="budget_remaining">%1$s left</string>
+    <string name="budget_over">%1$s over</string>
+    <string name="budget_add">Add budget</string>
+    <string name="budget_edit">Edit budget</string>
+    <string name="budget_empty_title">No budget yet</string>
+    <string name="budget_empty_body">Set a limit per category to stay on track.</string>
+    <string name="budget_limit_label">Limit (VND)</string>
+    <string name="budget_delete">Delete budget</string>
+    <string name="budget_no_limit">Not set</string>
+
+    <!-- Stats -->
+    <string name="stats_title">Stats</string>
+    <string name="stats_last_months">Last 6 months</string>
+    <string name="stats_top_categories">Top spending categories</string>
+    <string name="stats_avg_day">Average per day</string>
+    <string name="stats_biggest">Largest expense</string>
+    <string name="stats_empty">Not enough data yet</string>
+    <string name="stats_month_total">Spent this month</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_account">Account</string>
+    <string name="settings_reminder">Daily reminder</string>
+    <string name="settings_reminder_desc">A daily nudge so you never forget to log spending</string>
+    <string name="settings_reminder_time">Reminder time</string>
+    <string name="settings_sign_out">Sign out</string>
+    <string name="settings_sign_out_confirm">Sign out of Vi Nho?</string>
+    <string name="settings_version">Version %1$s</string>
+    <string name="settings_data_note">Synced with Firebase and available offline</string>
+    <string name="settings_permission_needed">Notification permission is needed for reminders</string>
+
+    <!-- Categories -->
+    <string name="cat_food">Food &amp; drinks</string>
+    <string name="cat_transport">Transport</string>
+    <string name="cat_shopping">Shopping</string>
+    <string name="cat_bills">Bills</string>
+    <string name="cat_entertainment">Entertainment</string>
+    <string name="cat_health">Health</string>
+    <string name="cat_education">Education</string>
+    <string name="cat_housing">Housing</string>
+    <string name="cat_other_expense">Other expense</string>
+    <string name="cat_salary">Salary</string>
+    <string name="cat_bonus">Bonus</string>
+    <string name="cat_other_income">Other income</string>
+
+    <!-- Reminder notification -->
+    <string name="notif_channel_name">Spending reminders</string>
+    <string name="notif_channel_desc">Daily reminders to log your spending</string>
+    <string name="notif_title">Spent anything today?</string>
+    <string name="notif_body">Take 30 seconds to log it — future you will be grateful.</string>
+
+    <!-- Accessibility -->
+    <string name="cd_add_transaction">Add transaction</string>
+    <string name="cd_settings">Settings</string>
+    <string name="cd_avatar">Profile photo</string>
+    <string name="cd_receipt">Receipt photo</string>
+    <string name="cd_prev_month">Previous month</string>
+    <string name="cd_next_month">Next month</string>
+    <string name="cd_delete_transaction">Delete transaction %1$s</string>
+</resources>

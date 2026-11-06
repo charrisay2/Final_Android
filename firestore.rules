@@ -1,0 +1,73 @@
+rules_version = '2';
+
+// ---------------------------------------------------------------------------
+// Ví Nhỏ — Firestore Security Rules
+// Nguyên tắc: mọi dữ liệu nằm dưới /users/{uid}, chỉ chính chủ được đọc/ghi.
+// Client không bao giờ đọc được dữ liệu người khác, kể cả khi sửa app.
+// ---------------------------------------------------------------------------
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(uid) {
+      return signedIn() && request.auth.uid == uid;
+    }
+
+    // Giao dịch hợp lệ: kiểm tra kiểu + miền giá trị, chặn dữ liệu rác từ client
+    function validTransaction(d) {
+      return d.amount is int
+        && d.amount > 0
+        && d.amount <= 1000000000000
+        && d.type in ['INCOME', 'EXPENSE']
+        && d.category is string
+        && d.category.size() <= 30
+        && d.note is string
+        && d.note.size() <= 200
+        && d.date is timestamp
+        && d.month is string
+        && d.month.matches('^[0-9]{4}-[0-9]{2}$')
+        && (!('receiptUrl' in d)
+            || d.receiptUrl == null
+            || (d.receiptUrl is string && d.receiptUrl.size() <= 500));
+    }
+
+    function validBudget(d) {
+      return d.limit is int
+        && d.limit > 0
+        && d.limit <= 1000000000000
+        && d.category is string
+        && d.category.size() <= 30
+        && d.month is string
+        && d.month.matches('^[0-9]{4}-[0-9]{2}$');
+    }
+
+    match /users/{uid} {
+      allow read: if isOwner(uid);
+      allow create, update: if isOwner(uid)
+        && request.resource.data.keys().hasOnly(['displayName', 'email', 'photoUrl'])
+        && request.resource.data.displayName is string
+        && request.resource.data.displayName.size() <= 100;
+      allow delete: if false;   // xoá tài khoản phải làm ở server/Admin SDK
+
+      match /transactions/{transactionId} {
+        allow read: if isOwner(uid);
+        allow create, update: if isOwner(uid) && validTransaction(request.resource.data);
+        allow delete: if isOwner(uid);
+      }
+
+      match /budgets/{budgetId} {
+        allow read: if isOwner(uid);
+        allow create, update: if isOwner(uid) && validBudget(request.resource.data);
+        allow delete: if isOwner(uid);
+      }
+    }
+
+    // Mặc định từ chối mọi đường dẫn khác
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

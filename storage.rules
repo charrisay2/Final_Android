@@ -1,0 +1,24 @@
+rules_version = '2';
+
+// ---------------------------------------------------------------------------
+// Ví Nhỏ — Cloud Storage rules cho ảnh hoá đơn
+// Mỗi người dùng chỉ ghi/đọc trong thư mục users/{uid}/receipts của chính mình.
+// Giới hạn 5 MB và chỉ nhận file ảnh để tránh lạm dụng dung lượng.
+// ---------------------------------------------------------------------------
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    match /users/{uid}/receipts/{fileName} {
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow create, update: if request.auth != null
+        && request.auth.uid == uid
+        && request.resource.size < 5 * 1024 * 1024
+        && request.resource.contentType.matches('image/.*');
+      allow delete: if request.auth != null && request.auth.uid == uid;
+    }
+
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

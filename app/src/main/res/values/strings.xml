@@ -1,0 +1,148 @@
+<resources>
+    <string name="app_name">Ví Nhỏ</string>
+    <string name="app_tagline">Quản lý chi tiêu cá nhân</string>
+
+    <!-- Chung -->
+    <string name="action_save">Lưu</string>
+    <string name="action_cancel">Huỷ</string>
+    <string name="action_delete">Xoá</string>
+    <string name="action_retry">Thử lại</string>
+    <string name="action_add">Thêm</string>
+    <string name="action_close">Đóng</string>
+    <string name="action_back">Quay lại</string>
+    <string name="loading">Đang tải…</string>
+    <string name="generic_error">Có lỗi xảy ra: %1$s</string>
+    <string name="offline_banner">Đang offline — thay đổi sẽ đồng bộ khi có mạng</string>
+    <string name="money_unit">đ</string>
+
+    <!-- Đăng nhập -->
+    <string name="login_subtitle">Theo dõi thu chi, giữ ngân sách trong tầm tay</string>
+    <string name="login_google">Đăng nhập bằng Google</string>
+    <string name="login_note">Dữ liệu lưu trong tài khoản Google của bạn và dùng được khi offline</string>
+    <string name="login_failed">Đăng nhập thất bại: %1$s</string>
+    <string name="login_cancelled">Bạn đã huỷ đăng nhập</string>
+
+    <!-- Điều hướng -->
+    <string name="nav_overview">Tổng quan</string>
+    <string name="nav_transactions">Giao dịch</string>
+    <string name="nav_budget">Ngân sách</string>
+    <string name="nav_stats">Thống kê</string>
+    <string name="nav_settings">Cài đặt</string>
+
+    <!-- Tổng quan -->
+    <string name="overview_title">Tổng quan</string>
+    <string name="overview_greeting">Xin chào, %1$s</string>
+    <string name="overview_income">Thu nhập</string>
+    <string name="overview_expense">Chi tiêu</string>
+    <string name="overview_balance">Số dư</string>
+    <string name="overview_by_category">Chi theo danh mục</string>
+    <string name="overview_recent">Giao dịch gần đây</string>
+    <string name="overview_see_all">Xem tất cả</string>
+    <string name="overview_empty">Chưa có giao dịch trong tháng này</string>
+    <string name="overview_budget_used">Đã dùng %1$s%% ngân sách tháng</string>
+    <string name="overview_budget_over">Vượt ngân sách %1$s</string>
+    <string name="overview_no_budget">Chưa đặt ngân sách tháng này</string>
+    <string name="overview_prev_month">Tháng trước</string>
+    <string name="overview_next_month">Tháng sau</string>
+
+    <!-- Giao dịch -->
+    <string name="tx_title">Giao dịch</string>
+    <string name="tx_search_hint">Tìm theo ghi chú…</string>
+    <string name="tx_filter_all">Tất cả</string>
+    <string name="tx_filter_income">Thu</string>
+    <string name="tx_filter_expense">Chi</string>
+    <string name="tx_empty_title">Không có giao dịch</string>
+    <string name="tx_empty_body">Bấm nút + để thêm khoản thu hoặc chi đầu tiên.</string>
+    <string name="tx_empty_search">Không tìm thấy giao dịch khớp “%1$s”</string>
+    <string name="tx_today">Hôm nay</string>
+    <string name="tx_yesterday">Hôm qua</string>
+    <string name="tx_count">%1$d giao dịch</string>
+
+    <!-- Form giao dịch -->
+    <string name="form_title_add">Thêm giao dịch</string>
+    <string name="form_title_edit">Sửa giao dịch</string>
+    <string name="form_type_expense">Khoản chi</string>
+    <string name="form_type_income">Khoản thu</string>
+    <string name="form_amount">Số tiền</string>
+    <string name="form_category">Danh mục</string>
+    <string name="form_date">Ngày</string>
+    <string name="form_note">Ghi chú</string>
+    <string name="form_note_hint">Ví dụ: Ăn trưa với nhóm</string>
+    <string name="form_receipt">Ảnh hoá đơn</string>
+    <string name="form_receipt_add">Chọn ảnh hoá đơn</string>
+    <string name="form_receipt_change">Đổi ảnh</string>
+    <string name="form_receipt_remove">Xoá ảnh</string>
+    <string name="form_save">Lưu giao dịch</string>
+    <string name="form_delete">Xoá giao dịch</string>
+    <string name="form_delete_confirm_title">Xoá giao dịch?</string>
+    <string name="form_delete_confirm_body">Giao dịch này sẽ bị xoá khỏi tài khoản và không khôi phục được.</string>
+    <string name="error_amount_required">Nhập số tiền lớn hơn 0</string>
+    <string name="error_category_required">Chọn một danh mục</string>
+    <string name="form_saved">Đã lưu giao dịch</string>
+    <string name="form_deleted">Đã xoá giao dịch</string>
+    <string name="form_uploading">Đang tải ảnh lên…</string>
+
+    <!-- Ngân sách -->
+    <string name="budget_title">Ngân sách</string>
+    <string name="budget_total">Ngân sách tháng</string>
+    <string name="budget_spent">Đã chi %1$s / %2$s</string>
+    <string name="budget_remaining">Còn lại %1$s</string>
+    <string name="budget_over">Vượt %1$s</string>
+    <string name="budget_add">Thêm ngân sách</string>
+    <string name="budget_edit">Sửa ngân sách</string>
+    <string name="budget_empty_title">Chưa đặt ngân sách</string>
+    <string name="budget_empty_body">Đặt giới hạn cho từng danh mục để kiểm soát chi tiêu.</string>
+    <string name="budget_limit_label">Giới hạn (đ)</string>
+    <string name="budget_delete">Xoá ngân sách</string>
+    <string name="budget_no_limit">Chưa đặt</string>
+
+    <!-- Thống kê -->
+    <string name="stats_title">Thống kê</string>
+    <string name="stats_last_months">6 tháng gần đây</string>
+    <string name="stats_top_categories">Danh mục chi nhiều nhất</string>
+    <string name="stats_avg_day">Trung bình mỗi ngày</string>
+    <string name="stats_biggest">Khoản chi lớn nhất</string>
+    <string name="stats_empty">Chưa đủ dữ liệu để thống kê</string>
+    <string name="stats_month_total">Tổng chi tháng này</string>
+
+    <!-- Cài đặt -->
+    <string name="settings_title">Cài đặt</string>
+    <string name="settings_account">Tài khoản</string>
+    <string name="settings_reminder">Nhắc ghi chi tiêu</string>
+    <string name="settings_reminder_desc">Thông báo mỗi ngày để bạn không quên ghi lại</string>
+    <string name="settings_reminder_time">Giờ nhắc</string>
+    <string name="settings_sign_out">Đăng xuất</string>
+    <string name="settings_sign_out_confirm">Đăng xuất khỏi Ví Nhỏ?</string>
+    <string name="settings_version">Phiên bản %1$s</string>
+    <string name="settings_data_note">Dữ liệu đồng bộ qua Firebase và dùng được khi offline</string>
+    <string name="settings_permission_needed">Cần quyền thông báo để nhắc bạn mỗi ngày</string>
+
+    <!-- Danh mục -->
+    <string name="cat_food">Ăn uống</string>
+    <string name="cat_transport">Di chuyển</string>
+    <string name="cat_shopping">Mua sắm</string>
+    <string name="cat_bills">Hoá đơn</string>
+    <string name="cat_entertainment">Giải trí</string>
+    <string name="cat_health">Sức khoẻ</string>
+    <string name="cat_education">Giáo dục</string>
+    <string name="cat_housing">Nhà ở</string>
+    <string name="cat_other_expense">Chi khác</string>
+    <string name="cat_salary">Lương</string>
+    <string name="cat_bonus">Thưởng</string>
+    <string name="cat_other_income">Thu khác</string>
+
+    <!-- Thông báo nhắc nhở -->
+    <string name="notif_channel_name">Nhắc ghi chi tiêu</string>
+    <string name="notif_channel_desc">Thông báo hằng ngày nhắc bạn ghi lại các khoản chi</string>
+    <string name="notif_title">Hôm nay bạn đã chi gì?</string>
+    <string name="notif_body">Dành 30 giây ghi lại để cuối tháng không phải nhớ.</string>
+
+    <!-- Accessibility -->
+    <string name="cd_add_transaction">Thêm giao dịch</string>
+    <string name="cd_settings">Cài đặt</string>
+    <string name="cd_avatar">Ảnh đại diện</string>
+    <string name="cd_receipt">Ảnh hoá đơn</string>
+    <string name="cd_prev_month">Tháng trước</string>
+    <string name="cd_next_month">Tháng sau</string>
+    <string name="cd_delete_transaction">Xoá giao dịch %1$s</string>
+</resources>
